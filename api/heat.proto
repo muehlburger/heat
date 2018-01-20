@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package heat;
+
+service Heat {
+    rpc Set(Temp) returns(Temp) {}
+}
+
+message Temp {
+    string value = 1;
+    string room = 2;
+}
