@@ -64,8 +64,8 @@ type server struct{}
 
 func (server) Set(ctx context.Context, temp *pb.Temp) (*pb.Temp, error) {
 	deviceID := getDeviceID(temp.Room)
-	logrus.Infof("Set temperature to %s°C for %s (%s)", temp.Value, temp.Room, deviceID)
-	cmd := exec.Command("sudo", "/home/pi/heaterControl.exp", deviceID, "00000000", temp.Value)
+	logrus.Infof("Set temperature to %d°C for %s (%s)", temp.Value, temp.Room, deviceID)
+	cmd := exec.Command("sudo", "/home/pi/heaterControl.exp", deviceID, "00000000", fmt.Sprintf("%d", temp.Value))
 	if data, err := cmd.CombinedOutput(); err != nil {
 		return nil, fmt.Errorf("temp updated failed: %s", data)
 	}

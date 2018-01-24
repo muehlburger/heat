@@ -27,7 +27,7 @@ func checkRoom(room string) error {
 
 func main() {
 	backend := flag.String("b", "hassbian.local:8080", "address of the heat backend")
-	temperature := flag.String("t", "22", "set temperature to this value")
+	temperature := flag.Int("t", 22, "set temperature to this value")
 	room := flag.String("r", "", "room (livingroom, bedroom, bath, kidsroom) to be updated")
 	flag.Parse()
 
@@ -45,12 +45,12 @@ func main() {
 	client := pb.NewHeatClient(conn)
 
 	temp := &pb.Temp{
-		Value: *temperature,
+		Value: int32(*temperature),
 		Room:  *room,
 	}
 	res, err := client.Set(context.Background(), temp)
 	if err != nil {
-		log.Fatalf("could not set temp value %s: %v", temp.Value, err)
+		log.Fatalf("could not set temp value %d: %v", temp.Value, err)
 	}
-	log.Printf("Temperature set to %s°C in %s.", res.Value, res.Room)
+	log.Printf("Temperature set to %d°C in %s.", res.Value, res.Room)
 }

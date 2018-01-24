@@ -7,6 +7,6 @@ service Heat {
 }
 
 message Temp {
-    string value = 1;
+    int32 value = 1;
     string room = 2;
 }
