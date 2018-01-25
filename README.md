@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/muehlburger/heat)](https://goreportcard.com/report/github.com/muehlburger/heat)
 # heat
 heat is a gRPC server written in go that wraps Torsten Traenker's heaterControl.exp (http://torsten-traenkner.de/wissen/smarthome/heizung.php). 
 
