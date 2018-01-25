@@ -19,7 +19,7 @@ const (
 	kidsroom   = "kidsroom"
 )
 
-var backend = flag.String("b", "hassbian.local:8080", "address of the heat backend")
+var backend = flag.String("b", "localhost:8080", "address of the heat backend")
 
 func main() {
 	log.Fatal(http.ListenAndServe(":80", handler()))
